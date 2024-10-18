@@ -18,59 +18,67 @@ def loading_animation():
 loading_animation()
 Intro()
 
-# Input
+# (1) Definisikan fungsi f(x)
 fungsi = input(" Masukkan Fungsi  : ")
-batas_bawah = float(input(" Batas bawah      : "))
-batas_atas = float(input(" Batas atas       : "))
-iterasi_maksimum = int(input(" Iterasi Maksimum : "))
-
-# Pastikan batas bawah lebih kecil dari batas atas
-if batas_bawah > batas_atas:
-    batas_bawah, batas_atas = batas_atas, batas_bawah
-
-# Kebutuhan sistem
-h = (batas_atas - batas_bawah) / iterasi_maksimum
-fungsi = fungsi.replace('E', 'e').replace('X', 'x')
-fungsi = fungsi.replace('e', '2.718281828')
-fungsi = fungsi.replace('^', '**')
-fungsi = re.sub(r'\s+', '', fungsi)
-fungsi = re.sub(r'(\d+)(x)', r'\1*\2', fungsi)
-
-# Definisikan fungsi dengan exec
+fungsi = fungsi.replace('E', 'e').replace('X', 'x').replace('^', '**')  # Ganti simbol dan format
+fungsi = re.sub(r'\s+', '', fungsi)  # Hapus spasi
 exec(f"""
 def f(x):
     return {fungsi}
 """)
 
-# Header tabel
+# (2) Tentukan range untuk x yang berupa batas bawah xbawah dan batas atas xatas
+batas_bawah = float(input(" Batas bawah      : "))
+batas_atas = float(input(" Batas atas       : "))
+
+# Pastikan batas bawah lebih kecil dari batas atas
+if batas_bawah > batas_atas:
+    batas_bawah, batas_atas = batas_atas, batas_bawah
+
+# (3) Tentukan jumlah pembagian N
+iterasi_maksimum = int(input(" Iterasi Maksimum : "))
+
+# (4) Hitung step pembagi h
+h = (batas_atas - batas_bawah) / iterasi_maksimum
+
+# (5) Untuk i = 0 s/d N, hitung xi = xbawah + i.h dan yi = f(xi)
+tabel_hasil = []
+akar_ditemukan = None  # Menyimpan informasi tentang akar
+
 print("\n +----------+----------+-------------+-------------+---------------------+")
 print(" | Iterasi  |    xi    |    f(xi)    |  f(x(i+1))  |  f(xi)*f(x(i+1))    |")
 print(" +----------+----------+-------------+-------------+---------------------+")
 
-# Operasi
-iterasi = 0
-tabel_hasil = []
-
-while iterasi <= iterasi_maksimum:
-    xi = batas_bawah + iterasi * h
-    xi_1 = batas_bawah + (iterasi + 1) * h
-    
-    # Panggil fungsi f dengan satu argumen
+for i in range(iterasi_maksimum + 1):
+    xi = batas_bawah + i * h
     f_xi = f(xi)
-    f_xi_1 = f(xi_1)
+    
+    # Hitung f(xi+1) hanya jika i < iterasi_maksimum
+    if i < iterasi_maksimum:
+        f_xi_1 = f(batas_bawah + (i + 1) * h)
+    else:
+        f_xi_1 = None  # Tidak ada f(xi+1) di iterasi terakhir
 
-    if iterasi == iterasi_maksimum:
-        print(f" | {iterasi:<8} | {xi:<8.4f} | {f_xi:<11.4f} |")
-        print(" +----------+----------+-------------+")
+    # (6) Cari k, apakah f(xk) = 0 atau ada perubahan tanda
+    if f_xi == 0:
+        akar_ditemukan = (xi, xi)
         break
+    elif i < iterasi_maksimum and f_xi * f_xi_1 < 0:  # Periksa perubahan tanda hanya jika f_xi_1 valid
+        if abs(f_xi) < abs(f_xi_1):
+            akar_ditemukan = (xi, batas_bawah + (i + 1) * h)  # Akar di xi
+        else:
+            akar_ditemukan = (batas_bawah + (i + 1) * h, xi)  # Akar di xi+1
 
-    f_xi_f_xi_1 = f_xi * f_xi_1
-    
-    tabel_hasil.append([iterasi, xi, f_xi, f_xi_1, f_xi_f_xi_1])
-    print(f" | {iterasi:<8} | {xi:<8.4f} | {f_xi:<11.4f} | {f_xi_1:<11.4f} | {f_xi_f_xi_1:<19.4f} |")
+    f_xi_f_xi_1 = f_xi * f_xi_1 if f_xi_1 is not None else None
+    tabel_hasil.append([i, xi, f_xi, f_xi_1, f_xi_f_xi_1])
+
+    # Mencetak hasil dengan penanganan None
+    f_xi_str = f"{f_xi:<11.4f}" if f_xi is not None else "N/A"
+    f_xi_1_str = f"{f_xi_1:<11.4f}" if f_xi_1 is not None else "N/A"
+    f_xi_f_xi_1_str = f"{f_xi_f_xi_1:<19.4f}" if f_xi_f_xi_1 is not None else "N/A"
+
+    print(f" | {i:<8} | {xi:<8.4f} | {f_xi_str} | {f_xi_1_str} | {f_xi_f_xi_1_str} |")
     print(" +----------+----------+-------------+-------------+---------------------+")
-    
-    iterasi += 1
 
 # Plotting
 x_values = [batas_bawah + i * h for i in range(iterasi_maksimum + 1)]
@@ -90,3 +98,9 @@ plt.show()
 df_hasil = pd.DataFrame(tabel_hasil, columns=["Iterasi", "xi", "f(xi)", "f(x(i+1))", "f(xi)*f(x(i+1))"])
 print("\nTabel Hasil dalam bentuk DataFrame:")
 print(df_hasil)
+
+# Menampilkan hasil akar yang ditemukan
+if akar_ditemukan:
+    print(f"\nAkar ditemukan di antara x = {akar_ditemukan[0]} dan x = {akar_ditemukan[1]}")
+else:
+    print("\nTidak ditemukan akar di rentang yang diberikan.")
