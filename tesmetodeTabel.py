@@ -2,12 +2,20 @@ import re
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from tqdm import tqdm
+import time
 
 def Intro():
     print("\n +------------------------+")
     print(" |      Metode Tabel      |")
     print(" +------------------------+\n")
 
+# Animasi loading
+def loading_animation():
+    for _ in tqdm(range(10), desc="Memuat...", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt}"):
+        time.sleep(0.2)  # Simulasi waktu loading
+
+loading_animation()
 Intro()
 
 # Input
