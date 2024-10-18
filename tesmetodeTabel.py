@@ -16,6 +16,10 @@ batas_bawah = float(input(" Batas bawah      : "))
 batas_atas = float(input(" Batas atas       : "))
 iterasi_maksimum = int(input(" Iterasi Maksimum : "))
 
+# Pastikan batas bawah lebih kecil dari batas atas
+if batas_bawah > batas_atas:
+    batas_bawah, batas_atas = batas_atas, batas_bawah
+
 # Kebutuhan sistem
 h = (batas_atas - batas_bawah) / iterasi_maksimum
 fungsi = fungsi.replace('E', 'e').replace('X', 'x')
