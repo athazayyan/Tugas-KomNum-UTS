@@ -8,9 +8,6 @@ def Intro():
     print(" |      Metode Tabel      |")
     print(" +------------------------+\n")
 
-def f(x, fungsi):
-    return eval(fungsi)
-
 Intro()
 
 # Input
@@ -28,11 +25,10 @@ fungsi = re.sub(r'\s+', '', fungsi)
 fungsi = re.sub(r'(\d+)(x)', r'\1*\2', fungsi)
 
 # Definisikan fungsi dengan exec
-Fungsi_Baru = f"""
+exec(f"""
 def f(x):
     return {fungsi}
-"""
-exec(Fungsi_Baru)
+""")
 
 # Header tabel
 print("\n +----------+----------+-------------+-------------+---------------------+")
@@ -47,8 +43,9 @@ while iterasi <= iterasi_maksimum:
     xi = batas_bawah + iterasi * h
     xi_1 = batas_bawah + (iterasi + 1) * h
     
-    f_xi = f(xi, fungsi)
-    f_xi_1 = f(xi_1, fungsi)
+    # Panggil fungsi f dengan satu argumen
+    f_xi = f(xi)
+    f_xi_1 = f(xi_1)
 
     if iterasi == iterasi_maksimum:
         print(f" | {iterasi:<8} | {xi:<8.4f} | {f_xi:<11.4f} |")
@@ -65,7 +62,7 @@ while iterasi <= iterasi_maksimum:
 
 # Plotting
 x_values = [batas_bawah + i * h for i in range(iterasi_maksimum + 1)]
-y_values = [f(x, fungsi) for x in x_values]
+y_values = [f(x) for x in x_values]
 
 plt.figure(figsize=(10, 6))
 plt.plot(x_values, y_values, label=f'f(x) = {fungsi}', color='b')
