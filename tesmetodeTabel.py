@@ -2,18 +2,35 @@ import re
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 from tqdm import tqdm
 import time
 
-def Intro():
-    print("\n +------------------------+")
-    print(" |      Metode Tabel      |")
-    print(" +------------------------+\n")
+# Warna untuk tampilan
+class Color:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
-# Animasi loading
+def Intro():
+    print(Color.HEADER + "\n +------------------------------+")
+    print(" |  " + Color.BOLD + Color.OKBLUE + "  Metode Tabel  " + Color.ENDC + "  |")
+    print(" +------------------------------+\n" + Color.ENDC)
+    print(" " + Color.OKGREEN + "Selamat datang di Program Pencarian Akar!" + Color.ENDC)
+    print(" " + Color.WARNING + "Silakan masukkan fungsi yang diinginkan." + Color.ENDC)
+
+# Animasi loading yang lebih menarik
 def loading_animation():
-    for _ in tqdm(range(10), desc="Memuat...", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt}"):
-        time.sleep(0.2)  # Simulasi waktu loading
+    loading_steps = ["Memulai Program", "Mempersiapkan Fungsi", "Menghitung Rentang", "Menyiapkan Tabel"]
+    for step in loading_steps:
+        for _ in tqdm(range(10), desc=step, bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt}"):
+            time.sleep(0.1)  # Simulasi waktu loading
+    print(Color.OKGREEN + "\nProgram Siap!" + Color.ENDC)
 
 loading_animation()
 Intro()
@@ -80,18 +97,34 @@ for i in range(iterasi_maksimum + 1):
     print(f" | {i:<8} | {xi:<8.4f} | {f_xi_str} | {f_xi_1_str} | {f_xi_f_xi_1_str} |")
     print(" +----------+----------+-------------+-------------+---------------------+")
 
-# Plotting
+# Plotting dengan animasi
 x_values = [batas_bawah + i * h for i in range(iterasi_maksimum + 1)]
 y_values = [f(x) for x in x_values]
 
-plt.figure(figsize=(10, 6))
-plt.plot(x_values, y_values, label=f'f(x) = {fungsi}', color='b')
-plt.axhline(0, color='red', linestyle='--', label='y = 0 (Akar)')
-plt.title('Pencarian Akar Menggunakan Metode Tabel')
-plt.xlabel('x')
-plt.ylabel('f(x)')
-plt.grid(True)
-plt.legend()
+fig, ax = plt.subplots(figsize=(10, 6))
+line, = ax.plot([], [], label=f'f(x) = {fungsi}', color='cyan', linewidth=2)
+ax.axhline(0, color='red', linestyle='--', label='y = 0 (Akar)')
+ax.set_title('Pencarian Akar Menggunakan Metode Tabel', fontsize=16, fontweight='bold', color='purple')
+ax.set_xlabel('x', fontsize=12)
+ax.set_ylabel('f(x)', fontsize=12)
+ax.set_xlim(batas_bawah, batas_atas)
+ax.set_ylim(min(y_values) - 10, max(y_values) + 10)  # Set initial limits
+ax.grid(True, linestyle='--', color='lightgray')
+ax.legend()
+
+# Animasi plotting
+def init():
+    line.set_data([], [])
+    return line,
+
+def update(frame):
+    line.set_data(x_values[:frame], y_values[:frame])
+    # Hanya set ylim jika frame > 0
+    if frame > 0:
+        ax.set_ylim(min(y_values[:frame]) - 10, max(y_values[:frame]) + 10)
+    return line,
+
+ani = FuncAnimation(fig, update, frames=len(x_values), init_func=init, blit=True, repeat=False)
 plt.show()
 
 # Hasil output dalam bentuk tabel
