@@ -1,56 +1,83 @@
+import re
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Fungsi untuk mengevaluasi persamaan
+def Intro():
+    print("\n +------------------------+")
+    print(" |      Metode Tabel      |")
+    print(" +------------------------+\n")
+
 def f(x, fungsi):
     return eval(fungsi)
 
-# Metode tabel untuk mencari akar
-def metode_tabel(fungsi, batas_bawah, batas_atas, iterasi_maks):
-    # Membagi rentang menjadi titik-titik
-    x_values = np.linspace(batas_bawah, batas_atas, iterasi_maks)
-    y_values = [f(x, fungsi) for x in x_values]
+Intro()
 
-    # Mencari interval di mana terjadi perubahan tanda (akar)
-    akar_ditemukan = False
-    tabel_hasil = pd.DataFrame({'x': x_values, 'f(x)': y_values})
+# Input
+fungsi = input(" Masukkan Fungsi  : ")
+batas_bawah = float(input(" Batas bawah      : "))
+batas_atas = float(input(" Batas atas       : "))
+iterasi_maksimum = int(input(" Iterasi Maksimum : "))
+
+# Kebutuhan sistem
+h = (batas_atas - batas_bawah) / iterasi_maksimum
+fungsi = fungsi.replace('E', 'e').replace('X', 'x')
+fungsi = fungsi.replace('e', '2.718281828')
+fungsi = fungsi.replace('^', '**')
+fungsi = re.sub(r'\s+', '', fungsi)
+fungsi = re.sub(r'(\d+)(x)', r'\1*\2', fungsi)
+
+# Definisikan fungsi dengan exec
+Fungsi_Baru = f"""
+def f(x):
+    return {fungsi}
+"""
+exec(Fungsi_Baru)
+
+# Header tabel
+print("\n +----------+----------+-------------+-------------+---------------------+")
+print(" | Iterasi  |    xi    |    f(xi)    |  f(x(i+1))  |  f(xi)*f(x(i+1))    |")
+print(" +----------+----------+-------------+-------------+---------------------+")
+
+# Operasi
+iterasi = 0
+tabel_hasil = []
+
+while iterasi <= iterasi_maksimum:
+    xi = batas_bawah + iterasi * h
+    xi_1 = batas_bawah + (iterasi + 1) * h
     
-    for i in range(len(y_values) - 1):
-        if y_values[i] * y_values[i+1] < 0:
-            akar_info = (x_values[i], x_values[i+1])
-            akar_ditemukan = True
-            tabel_hasil.loc[i, 'Akar Ditemukan?'] = 'Ya'
-            break
-    else:
-        akar_info = None
+    f_xi = f(xi, fungsi)
+    f_xi_1 = f(xi_1, fungsi)
+
+    if iterasi == iterasi_maksimum:
+        print(f" | {iterasi:<8} | {xi:<8.4f} | {f_xi:<11.4f} |")
+        print(" +----------+----------+-------------+")
+        break
+
+    f_xi_f_xi_1 = f_xi * f_xi_1
     
-    # Plotting
-    plt.figure(figsize=(10, 6))
-    plt.plot(x_values, y_values, label=f'f(x) = {fungsi}', color='b')
-    plt.axhline(0, color='red', linestyle='--', label='y = 0 (Akar)')
-    plt.title('Pencarian Akar Menggunakan Metode Tabel')
-    plt.xlabel('x')
-    plt.ylabel('f(x)')
-    plt.grid(True)
-    plt.legend()
-    plt.show()
+    tabel_hasil.append([iterasi, xi, f_xi, f_xi_1, f_xi_f_xi_1])
+    print(f" | {iterasi:<8} | {xi:<8.4f} | {f_xi:<11.4f} | {f_xi_1:<11.4f} | {f_xi_f_xi_1:<19.4f} |")
+    print(" +----------+----------+-------------+-------------+---------------------+")
+    
+    iterasi += 1
 
-    # Hasil output dalam bentuk tabel
-    print("Tabel Hasil:")
-    print(tabel_hasil.head(15))  # Menampilkan 15 nilai pertama sebagai contoh
+# Plotting
+x_values = [batas_bawah + i * h for i in range(iterasi_maksimum + 1)]
+y_values = [f(x, fungsi) for x in x_values]
 
-    if akar_ditemukan:
-        return f"Akar ditemukan di antara x = {akar_info[0]} dan x = {akar_info[1]}"
-    else:
-        return "Tidak ditemukan akar di rentang yang diberikan."
+plt.figure(figsize=(10, 6))
+plt.plot(x_values, y_values, label=f'f(x) = {fungsi}', color='b')
+plt.axhline(0, color='red', linestyle='--', label='y = 0 (Akar)')
+plt.title('Pencarian Akar Menggunakan Metode Tabel')
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.grid(True)
+plt.legend()
+plt.show()
 
-# Input dari pengguna
-fungsi = input("Masukkan persamaan non-linier (gunakan 'x' sebagai variabel, contoh: 'x**3 - 5*x + 3'): ")
-batas_bawah = float(input("Masukkan batas bawah: "))
-batas_atas = float(input("Masukkan batas atas: "))
-iterasi_maks = int(input("Masukkan iterasi maksimum: "))
-
-# Menampilkan hasil, tabel, dan plot
-hasil = metode_tabel(fungsi, batas_bawah, batas_atas, iterasi_maks)
-print(hasil)
+# Hasil output dalam bentuk tabel
+df_hasil = pd.DataFrame(tabel_hasil, columns=["Iterasi", "xi", "f(xi)", "f(x(i+1))", "f(xi)*f(x(i+1))"])
+print("\nTabel Hasil dalam bentuk DataFrame:")
+print(df_hasil)
