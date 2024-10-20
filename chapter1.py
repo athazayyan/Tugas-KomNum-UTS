@@ -65,12 +65,7 @@ else:
 '...Selesai..'
 
 
-def Plot_Style_Artis():
-    fig, ax = plt.subplots(figsize=(5, 2.7))
-    x = np.arange(len(fx1_array1))
-    ax.plot(x, x_array, color='blue', linewidth=3, linestyle='--')
-    l, = ax.plot(x, fx1_array1, color='orange', linewidth=2)
-    l2, = ax.plot(x, fx2_array1, color='red', linewidth=2)
-    l.set_linestyle(':')
-    l2.set_linestyle('-')
-    plt.show()
+
+
+
+
