@@ -12,8 +12,32 @@
         font-family: "Roboto", sans-serif;
       }
 
+      /* Awalnya elemen tidak terlihat */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Ketika elemen muncul di layar */
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+      .parallax {
+        height: 100vh; 
+        background-image: url('./icon/Background1.jpg');
+        background-position: center;
+        background-attachment: scroll;
+        background-repeat: no-repeat;
+      }
+
       .navbar {
         border-bottom: 2px solid #66fcf1;
+        z-index: 1000; 
+        position: sticky;
+        top: 0
       }
 
       .nav-link:hover {
@@ -28,9 +52,9 @@
       }
 
       .card:hover {
-        border: 2px solid #66fcf1; /* Border berwarna saat hover */
-        transform: scale(1.05); /* Card membesar sedikit */
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Bayangan lebih tebal */
+        border: 2px solid #66fcf1; 
+        transform: scale(1.05); 
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); 
       }
 
       button {
@@ -44,11 +68,12 @@
       }
     </style>
   </head>
-  <body class="bg-dark text-light">
+  <body class="parallax">
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Kelompok 2</a>
+        <a class="navbar-brand" href="#">Kelompok 1</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,27 +93,28 @@
       </div>
     </nav>
 
-    <!-- Home Section -->
-    <section class="header bg-dark text-white text-center text-sm-start p-5" id="home">
+    <!-- Home  -->
+    <section class="header text-white text-center text-sm-start p-5 fade-in" id="Home">
       <div class="container">
         <div class="d-flex align-items-center">
           <div>
-            <h1><span class="text-primary">Mari</span> Hidup Sehat, <span class="text-primary">Mari</span> Olahraga</h1>
+            <h1><span class="text-primary">Penyelesaian Persamaan Non-Linier</h1>
             <p class="lead">Temukan akar persamaan non-linier dengan metode tabel secara cepat dan akurat!</p>
             <button class="btn btn-primary btn-lg"><a href="#services" class="text-white text-decoration-none">Yuk Jelajahi</a></button>
           </div>
 
-          <img class="img-fluid w-50 d-none d-sm-block" src="image/tampilan.svg" alt="header" />
+          <img class="img-fluid w-50 d-none d-sm-block" src="icon/tampilan.svg" alt="header" />
         </div>
       </div>
     </section>
 
     <!-- Anggota Section -->
-    <section class="py-5" id="Anggota">
+    <section class="py-5 fade-in" id="Anggota">
       <div class="container">
         <h2 class="text-center mb-4">Anggota Kelompok</h2>
         <div class="row">
-          <!-- Duplikasi Card Anggota sebanyak 6 kali -->
+
+          <!--  Card Anggota  -->
           <div class="col-md-4 mb-3">
             <div class="card bg-dark text-light">
               <img src="./Foto/Affan.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
@@ -102,7 +128,8 @@
               </div>
             </div>
           </div>
-          <!-- 5 Card lainnya diulang sama -->
+          
+
           <div class="col-md-4 mb-3">
             <div class="card bg-dark text-light">
               <img src="./Foto/Muhammad Hanif.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
@@ -133,35 +160,7 @@
 
           <div class="col-md-4 mb-3">
             <div class="card bg-dark text-light">
-              <img src="./Foto/Muhammad Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
-              <div class="card-body text-center">
-                <h5 class="card-title">Muhammad Reky</h5>
-                <div class="d-flex justify-content-center">
-                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
-                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
-                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <div class="card bg-dark text-light">
-              <img src="./Foto/Muhammad Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
-              <div class="card-body text-center">
-                <h5 class="card-title">Muhammad Reky</h5>
-                <div class="d-flex justify-content-center">
-                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
-                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
-                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <div class="card bg-dark text-light">
-              <img src="./Foto/Muhammad Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <img src="./Foto/atha.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
                 <h5 class="card-title">Achmad Atha Zayyan</h5>
                 <div class="d-flex justify-content-center">
@@ -172,13 +171,56 @@
               </div>
             </div>
           </div>
-          <!-- Tambah duplikasi 4 card lainnya -->
+
+          <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light">
+              <img src="./Foto/Muhammad Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Muhammad Reky</h5>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light">
+              <img src="./Foto/Yafi Hidayatullah.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Yafi Hidayatullah</h5>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light align-items-center">
+              <img src="./Foto/Yafi Hidayatullah.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Yafi Hidayatullah</h5>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </section>
 
-    <!-- Kalkulator Section -->
-    <section class="container py-5" id="Input">
+    <!-- Kalkulator -->
+    <section class="container py-5 fade-in" id="Input">
       <h2 class="text-center mb-4">Kalkulator</h2>
       <form class="row g-3" id="equationForm">
         <div class="col-md-6">
@@ -204,11 +246,40 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark py-3 text-center">
-      <p class="mb-0">&copy; 2024 Non-linear Equation Solver. All Rights Reserved.</p>
+    <footer class="bg-dark py-3 text-center fade-in">
+      <p class="mb-0">&copy; 2024 penyelesaian Non-linear. All Rights Reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // Pilih semua elemen kecuali navbar
+          const allElements = document.querySelectorAll('body *:not(.navbar)');
+          
+          // Tambahkan kelas 'fade-in' ke semua elemen yang ditemukan
+          allElements.forEach(element => {
+              element.classList.add('fade-in');
+          });
+  
+          // Fungsi untuk menangani scroll dan menambahkan kelas 'show' jika elemen terlihat
+          const handleScroll = () => {
+              const elements = document.querySelectorAll('.fade-in');
+              elements.forEach(element => {
+                  const rect = element.getBoundingClientRect();
+                  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  
+                  // Jika elemen terlihat di viewport, tambahkan kelas 'show'
+                  if (rect.top <= windowHeight - 100) {
+                      element.classList.add('show');
+                  }
+              });
+          };
+  
+          window.addEventListener('scroll', handleScroll);
+          handleScroll(); // Panggil sekali saat halaman dimuat untuk elemen yang sudah terlihat
+      });
+  </script>
   </body>
 </html>
