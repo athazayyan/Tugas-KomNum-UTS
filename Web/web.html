@@ -1,136 +1,212 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Metode Tabel</title>
+    <title>Penyelesaian Persamaan Non Linier</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #1a1a1d;
+        color: #f5f5f5;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .navbar {
+        border-bottom: 2px solid #66fcf1;
+      }
+
+      .nav-link:hover {
+        color: #66fcf1;
+        text-decoration: underline;
+      }
+
+      .card {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+      }
+
+      .card:hover {
+        border: 2px solid #66fcf1; /* Border berwarna saat hover */
+        transform: scale(1.05); /* Card membesar sedikit */
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Bayangan lebih tebal */
+      }
+
+      button {
+        border-radius: 5px;
+        transition: all 0.3s;
+      }
+
+      button:hover {
+        background-color: #66fcf1;
+        color: #1a1a1d;
+      }
+    </style>
   </head>
   <body class="bg-dark text-light">
-
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Metode Tabel</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Kelompok 2</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mx-5">
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link mx-2" href="#">Home</a>
+              <a class="nav-link" href="#Home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" href="#">Anggota</a>
+              <a class="nav-link" href="#Anggota">Anggota</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" href="#">Kalkulator</a>
+              <a class="nav-link" href="#Input">Kalkulator</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Home -->
-    <section class="header bg-dark text-light text-center text-sm-start p-5">
+    <!-- Home Section -->
+    <section class="header bg-dark text-white text-center text-sm-start p-5" id="home">
       <div class="container">
         <div class="d-flex align-items-center">
           <div>
-            <h1><span class="text-primary">Mari</span> Jalan-jalan, <span class="text-primary">Mari</span> Travel</h1>
-            <p class="lead">Yuk kita jalan, melepas penat, mengisi hari bersama teman-teman. Jadi, Mari Travel.</p>
-            <button class="btn btn-primary btn-lg">Yuk Berangkat</button>
+            <h1><span class="text-primary">Mari</span> Hidup Sehat, <span class="text-primary">Mari</span> Olahraga</h1>
+            <p class="lead">Temukan akar persamaan non-linier dengan metode tabel secara cepat dan akurat!</p>
+            <button class="btn btn-primary btn-lg"><a href="#services" class="text-white text-decoration-none">Yuk Jelajahi</a></button>
           </div>
-          <img class="img-fluid w-50 d-none d-sm-block" src="./icon/icon.svg" alt="header" />
+
+          <img class="img-fluid w-50 d-none d-sm-block" src="image/tampilan.svg" alt="header" />
         </div>
       </div>
     </section>
 
-    <!-- Anggota -->
-    <section class="Anggota bg-dark">
-      <h1 class="text-center p-3 text-light">Anggota Kelompok</h1>
-
-      <div class="container d-flex justify-content-center">
-        <div class="card bg-dark text-light m-2 border border-3 border-light" style="width: 18rem;">
-          <img src="./Foto/testt.jpg" class="card-img-top rounded-circle mx-auto d-block mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #fff; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-          <div class="card-body text-center">
-            <h5 class="card-title">Affan Suhendar</h5>
-            
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!-- Anggota Section -->
+    <section class="py-5" id="Anggota">
+      <div class="container">
+        <h2 class="text-center mb-4">Anggota Kelompok</h2>
+        <div class="row">
+          <!-- Duplikasi Card Anggota sebanyak 6 kali -->
+          <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light">
+              <img src="./Foto/Affan.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Affan Suhendar</h5>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="card bg-dark text-light m-2" style="width: 18rem">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <!-- 5 Card lainnya diulang sama -->
+          <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light">
+              <img src="./Foto/Muhammad Hanif.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Muhammad Hanif</h5>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="card bg-secondary text-light m-2" style="width: 18rem">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light">
+              <img src="./Foto/Muhammad Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Muhammad Reky</h5>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="container d-flex justify-content-center">
-        <div class="card bg-secondary text-light m-2" style="width: 18rem">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light">
+              <img src="./Foto/Muhammad Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Muhammad Reky</h5>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="card bg-secondary text-light m-2" style="width: 18rem">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light">
+              <img src="./Foto/Muhammad Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Muhammad Reky</h5>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="card bg-dark text-light m-2 border border-3 border-light" style="width: 18rem;">
-          <img src="./Foto/testt.jpg" class="card-img-top rounded-circle mx-auto d-block mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #fff; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-          <div class="card-body text-center">
-            <h5 class="card-title">Affan Suhendar</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light">
+              <img src="./Foto/Muhammad Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Achmad Atha Zayyan</h5>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="mx-2 text-light"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- Tambah duplikasi 4 card lainnya -->
         </div>
       </div>
     </section>
 
-    <!-- Input -->
-    <div class="container p-5 bg-dark text-light">
-      <h1>Input</h1>
-      <form class="row g-3">
+    <!-- Kalkulator Section -->
+    <section class="container py-5" id="Input">
+      <h2 class="text-center mb-4">Kalkulator</h2>
+      <form class="row g-3" id="equationForm">
         <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Input Fungsi</label>
-          <input type="text" class="form-control bg-secondary text-light" id="inputEmail4" />
+          <label for="functionInput" class="form-label">Fungsi</label>
+          <input type="text" class="form-control bg-secondary text-light" id="functionInput" placeholder="e.g., x^2 - 4" required />
         </div>
         <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Batas bawah</label>
-          <input type="text" class="form-control bg-secondary text-light" id="inputPassword4" />
+          <label for="lowerBound" class="form-label">Batas Bawah</label>
+          <input type="number" class="form-control bg-secondary text-light" id="lowerBound" required />
         </div>
         <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Batas atas</label>
-          <input type="text" class="form-control bg-secondary text-light" id="inputPassword4" />
+          <label for="upperBound" class="form-label">Batas Atas</label>
+          <input type="number" class="form-control bg-secondary text-light" id="upperBound" required />
         </div>
         <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Iterasi Maksimum</label>
-          <input type="text" class="form-control bg-secondary text-light" id="inputPassword4" />
+          <label for="tolerance" class="form-label">Toleransi</label>
+          <input type="number" class="form-control bg-secondary text-light" id="tolerance" required />
         </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Hitung</button>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-primary">Hitung Akar</button>
         </div>
       </form>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-3 text-center">
+      <p class="mb-0">&copy; 2024 Non-linear Equation Solver. All Rights Reserved.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
