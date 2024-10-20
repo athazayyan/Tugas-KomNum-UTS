@@ -64,6 +64,9 @@ else:
 
 '...Selesai..'
 
+x_range = [-10, 10]  
+plot_formula(fx1, x_range)
+
 
 # Fungsi untuk plotting rumus matematika
 def plot_formula(formula, x_range):
@@ -81,7 +84,5 @@ def plot_formula(formula, x_range):
     plt.legend()
     plt.show()
 
-# Contoh penggunaan
-formula = input("Masukkan rumus (gunakan x sebagai variabel): ")  # Misalnya: "np.sin(x) + 0.5*x"
-x_range = [-10, 10]  # Range nilai x
-plot_formula(formula, x_range)
+
+
