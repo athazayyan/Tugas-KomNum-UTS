@@ -9,6 +9,10 @@ def load_html_file(file_path):
         return file.read()
  
 def main():
+
+    st.set_page_config(layout="wide")
+    html_content = load_html_file('./Web/web.html')  # Sesuaikan path dengan lokasi file web.html
+    st.components.v1.html(html_content, height=600, scrolling=True)
     st.markdown("# Halaman Utama 🎈")
     st.sidebar.markdown("# Metode Tabel 🎈")
 
