@@ -3,13 +3,18 @@ import time
 import sympy as sp
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 
-
-
+def load_html_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return file.read()
+ 
 def main():
 
-    st.markdown("# Penyelesaian 🎈")
+    st.set_page_config(layout="wide")
+    html_content = load_html_file('./Web/web.html')  # Sesuaikan path dengan lokasi file web.html
+    st.components.v1.html(html_content, height=600, scrolling=True)
+    st.markdown("# Halaman Utama 🎈")
+    st.sidebar.markdown("# Metode Tabel 🎈")
 
     
     N = st.number_input("Masukkan Maks Iterasi", min_value=1, max_value=100)
