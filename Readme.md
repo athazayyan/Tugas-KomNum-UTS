@@ -16,4 +16,4 @@ Metode tabel adalah salah satu teknik numerik sederhana yang digunakan untuk men
 
 1. FILE index.html
    Kode pada file ini berisi template untuk halaman web yang berfokus pada penyelesaian persamaan non-linier. Dengan menggunakan Bootstrap dan CSS kustom, halaman ini dirancang untuk responsif dan menarik secara visual, serta menyediakan navigasi yang mudah untuk pengguna yang digunakan dalam bahasa pemrograman html.
-2. 
+2. FILE chapter1.py
