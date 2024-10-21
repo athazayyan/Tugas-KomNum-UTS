@@ -12,19 +12,11 @@
         font-family: "Roboto", sans-serif;
       }
 
-      /* Awalnya elemen tidak terlihat */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
+      .navbar {
+        z-index: 100;
+      }
 
-/* Ketika elemen muncul di layar */
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+     
       .parallax {
         height: 100vh; 
         background-image: url('./icon/Background1.jpg');
@@ -33,18 +25,7 @@
         background-repeat: no-repeat;
       }
 
-      .navbar {
-        border-bottom: 2px solid #66fcf1;
-        z-index: 1000; 
-        position: sticky;
-        top: 0
-      }
-
-      .nav-link:hover {
-        color: #66fcf1;
-        text-decoration: underline;
-      }
-
+     
       .card {
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -52,7 +33,7 @@
       }
 
       .card:hover {
-        border: 2px solid #66fcf1; 
+        border: 1.5px solid #e6e9e8; 
         transform: scale(1.05); 
         box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); 
       }
@@ -71,7 +52,7 @@
   <body class="parallax">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">Kelompok 1</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,7 +75,7 @@
     </nav>
 
     <!-- Home  -->
-    <section class="header text-white text-center text-sm-start p-5 fade-in" id="Home">
+    <section class="header text-white text-center text-sm-start  m-5  p-5 fade-in" id="Home">
       <div class="container">
         <div class="d-flex align-items-center">
           <div>
@@ -103,21 +84,21 @@
             <button class="btn btn-primary btn-lg"><a href="#services" class="text-white text-decoration-none">Yuk Jelajahi</a></button>
           </div>
 
-          <img class="img-fluid w-50 d-none d-sm-block" src="../static/icon/tampilan.svg" alt="header" />
+          <img class="img-fluid w-50 d-none d-sm-block" src="./icon/tampilan.svg" alt="header" />
         </div>
       </div>
     </section>
 
     <!-- Anggota Section -->
-    <section class="py-5 fade-in" id="Anggota">
+    <section class="p-5" id="Anggota">
       <div class="container">
-        <h2 class="text-center mb-4">Anggota Kelompok</h2>
+        <h1 class="text-center m-5">Anggota Kelompok</h1>
         <div class="row">
 
           <!--  Card Anggota  -->
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
             <div class="card bg-dark text-light">
-              <img src="../static/Foto/Affan.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <img src="./Foto/Affan.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
                 <h5 class="card-title">Affan Suhendar</h5>
                 <div class="d-flex justify-content-center">
@@ -130,9 +111,9 @@
           </div>
           
 
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
             <div class="card bg-dark text-light">
-              <img src="../static/Foto/Muhammad Hanif.jpg Hanif.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <img src="./Foto/Muhammad Hanif.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
                 <h5 class="card-title">Muhammad Hanif</h5>
                 <div class="d-flex justify-content-center">
@@ -144,9 +125,9 @@
             </div>
           </div>
 
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
             <div class="card bg-dark text-light">
-              <img src="../static/Foto/Muhammad Reky.JPG Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <img src="./Foto/Muhammad Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
                 <h5 class="card-title">Muhammad Reky</h5>
                 <div class="d-flex justify-content-center">
@@ -158,9 +139,9 @@
             </div>
           </div>
 
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
             <div class="card bg-dark text-light">
-              <img src="../static/Foto/atha.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <img src="./Foto/atha.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
                 <h5 class="card-title">Achmad Atha Zayyan</h5>
                 <div class="d-flex justify-content-center">
@@ -172,9 +153,9 @@
             </div>
           </div>
 
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
             <div class="card bg-dark text-light">
-              <img src="../static/Foto/DSC_3387.jpg Reky.JPG" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <img src="./Foto/DSC_3387.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
                 <h5 class="card-title">kiya</h5>
                 <div class="d-flex justify-content-center">
@@ -186,9 +167,9 @@
             </div>
           </div>
 
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
             <div class="card bg-dark text-light">
-              <img src="../static/Foto/Yafi Hidayatullah.jpg Hidayatullah.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <img src="./Foto/Yafi Hidayatullah.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
                 <h5 class="card-title">Yafi Hidayatullah</h5>
                 <div class="d-flex justify-content-center">
@@ -200,11 +181,11 @@
             </div>
           </div>
 
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
             <div class="card bg-dark text-light align-items-center">
-              <img src="../static/Foto/aidil.jpg Hidayatullah.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
+              <img src="./Foto/aidil.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
-                <h5 class="card-title">Aidil</h5>
+                <h5 class="card-title">Aidil Fitrah</h5>
                 <div class="d-flex justify-content-center">
                   <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
                   <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
@@ -219,9 +200,11 @@
       </div>
     </section>
 
+    <iframe id= "Input" src="http://localhost:8501" width="100%" height="600" frameborder="0"></iframe>
+
     <!-- Footer -->
     <footer class="bg-dark py-3 text-center fade-in">
-      <p class="mb-0">&copy; 2024 penyelesaian Non-linear. All Rights Reserved.</p>
+      <p class="mb-0">&copy; 2024 penyelesaian Non-linear by kelompok 1.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
