@@ -3,7 +3,6 @@ import time
 import sympy as sp
 import matplotlib.pyplot as plt
 import numpy as np
-import streamlit.components.v1 as components
 
 
 N = st.number_input("masukkan Maks Iterasi", min_value=1, max_value=10, value=10)
