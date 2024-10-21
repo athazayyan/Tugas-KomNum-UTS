@@ -10,9 +10,9 @@ st.sidebar.markdown("# Metode Tabel 🎈")
 
 with st.form("Metode tabel"):
     input_string = st.text_input("Masukkan fungsi f(x): ")
-    N = st.number_input("masukkan Maks Iterasi", min_value=1, max_value=10, value=10)
-    bawah = st.number_input("masukkan batas bawah", value=0.0)
-    atas = st.number_input("masukkan batas atas", value=0.1)
+    N = st.number_input("masukkan Maks Iterasi", min_value=1, max_value=100 )
+    bawah = st.number_input("masukkan batas bawah")
+    atas = st.number_input("masukkan batas atas")
     st.form_submit_button("Jalankan")
     h = float((atas - bawah) / N)
     i = 0
@@ -92,7 +92,7 @@ else:
 '...Selesai..'
 
 fig, ax = plt.subplots()
-iterations = list(range(1, Na))
+iterations = list(range(1, len(fx1_array) + 1))
 fig, ax = plt.subplots()
 
 ax.scatter(iterations, np.abs(fx1_array), label='f(x)', color='blue', marker='o')
