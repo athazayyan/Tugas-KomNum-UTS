@@ -14,8 +14,11 @@ with st.form("Metode tabel"):
     bawah = st.number_input("masukkan batas bawah", value=0.0)
     atas = st.number_input("masukkan batas atas", value=0.1)
     st.form_submit_button("Jalankan")
-h = float((atas - bawah) / N)
-i = 0
+    h = float((atas - bawah) / N)
+    i = 0
+    st.write("batas bawah adalah", bawah, "dan batas atas adalah", atas, "batas maksimum iterasi adalah", N)
+    st.write("H", h)
+
 x = sp.symbols('x')
 hasil = None
 x_array = []
@@ -25,8 +28,7 @@ fx3_array= []
 fx1_array1= []
 fx2_array1 = []
 fx3_array1 = []
-st.write("batas bawah adalah", bawah, "dan batas atas adalah", atas, "batas maksimum iterasi adalah", N)
-st.write("H", h)
+
 Na = N +1
 if input_string:
     try:
@@ -88,3 +90,18 @@ else:
     st.write("Silakan masukkan fungsi f(x) untuk memulai.")
 
 '...Selesai..'
+
+fig, ax = plt.subplots()
+iterations = list(range(1, Na))
+fig, ax = plt.subplots()
+
+ax.scatter(iterations, np.abs(fx1_array), label='f(x)', color='blue', marker='o')
+ax.scatter(iterations, np.abs(fx2_array), label='f(x+h)', color='green', marker='x')
+ax.axhline(0, color='black', linewidth=0.5)
+
+ax.set_xlabel('Iterasi')
+ax.set_ylabel('f(x)')
+ax.set_title(f'Plot Titik f(x), f(x+h) - Jumlah Iterasi: {N}')
+ax.legend()
+
+st.pyplot(fig)
