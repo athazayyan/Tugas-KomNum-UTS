@@ -4,6 +4,10 @@ import sympy as sp
 import matplotlib.pyplot as plt
 import numpy as np
 
+def load_html_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return file.read()
+ 
 def main():
     st.markdown("# Halaman Utama 🎈")
     st.sidebar.markdown("# Metode Tabel 🎈")
