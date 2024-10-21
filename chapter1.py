@@ -9,6 +9,15 @@ def load_html_file(file_path):
         return file.read()
  
 def main():
+
+
+    st.set_page_config(layout="wide")
+    image_path = "static/Foto/Affan.jpg"
+    html_content = load_html_file('./Web/web.html')  # Sesuaikan path dengan lokasi file web.html
+
+
+    st.components.v1.html(html_content, height=600, scrolling=True)
+
     st.markdown("# Halaman Utama 🎈")
     st.sidebar.markdown("# Metode Tabel 🎈")
 
@@ -100,5 +109,5 @@ def display_iteration(i, x_val, fx1, fx2, fx3):
         unsafe_allow_html=True
     )
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
