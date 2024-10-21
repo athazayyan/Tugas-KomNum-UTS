@@ -3,13 +3,10 @@ import time
 import sympy as sp
 import matplotlib.pyplot as plt
 import numpy as np
-import os
-
-
-
+ 
 def main():
 
-    st.markdown("# Penyelesaian 🎈")
+    st.markdown("# Penyelesaian🎈")
 
     
     N = st.number_input("Masukkan Maks Iterasi", min_value=1, max_value=100)
