@@ -16,16 +16,6 @@
         z-index: 100;
       }
 
-     
-      .parallax {
-        height: 100vh; 
-        background-image: url('./icon/Background1.jpg');
-        background-position: center;
-        background-attachment: scroll;
-        background-repeat: no-repeat;
-      }
-
-     
       .card {
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -47,12 +37,39 @@
         background-color: #66fcf1;
         color: #1a1a1d;
       }
+
+      .bg-video {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+
+      @media (min-aspect-ratio : 16/9){
+        .bg-video{
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      @media (max-aspect-ratio : 16/9){
+        .bg-video{
+          width: auto;
+          height: 100%;
+        }
+      }
+
     </style>
   </head>
   <body class="parallax">
 
+    <video class="bg-video" autoplay muted loop plays-inline>
+      <source src="./Video/dark-souls-night-campfire.3840x2160.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg bg-black navbar-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">Kelompok 1</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +84,7 @@
               <a class="nav-link" href="#Anggota">Anggota</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#Input">Kalkulator</a>
+              <a class="nav-link" href="#Input">Penyelesaian</a>
             </li>
           </ul>
         </div>
@@ -75,24 +92,26 @@
     </nav>
 
     <!-- Home  -->
-    <section class="header text-white text-center text-sm-start  m-5  p-5 fade-in" id="Home">
+    
+    <section class="header text-white text-center text-sm-start m-5 p-5 fade-in " id="Home" >
       <div class="container">
         <div class="d-flex align-items-center">
           <div>
-            <h1><span class="text-primary">Penyelesaian Persamaan Non-Linier</h1>
-            <p class="lead">Temukan akar persamaan non-linier dengan metode tabel secara cepat dan akurat!</p>
-            <button class="btn btn-primary btn-lg"><a href="#services" class="text-white text-decoration-none">Yuk Jelajahi</a></button>
+            <br><br><br><br><br><br><br><br><br>
+            <h1><span class="text-white fw-bold">Penyelesaian Persamaan Non-Linier</h1>
+            <p class="lead">Temukan akar persamaan non-linier dengan metode tabel<br> secara cepat dan akurat!</p>
+            <button class="btn btn-primary btn-lg"><a href="#Input" class="text-white text-decoration-none"> Yuk Mulai </a></button>
           </div>
-
-          <img class="img-fluid w-50 d-none d-sm-block" src="./icon/tampilan.svg" alt="header" />
+          
         </div>
       </div>
     </section>
 
     <!-- Anggota Section -->
-    <section class="p-5" id="Anggota">
+    <section class="p-5 ">
       <div class="container">
-        <h1 class="text-center m-5">Anggota Kelompok</h1>
+        <br><br><br><br id="Anggota"><br>
+        <h1 class="text-center m-5" >Anggota Kelompok</h1>
         <div class="row">
 
           <!--  Card Anggota  -->
@@ -100,7 +119,7 @@
             <div class="card bg-dark text-light">
               <img src="./Foto/Affan.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
-                <h5 class="card-title">Affan Suhendar</h5>
+                <h5 class="card-title" >Affan Suhendar</h5>
                 <div class="d-flex justify-content-center">
                   <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
                   <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
@@ -157,7 +176,7 @@
             <div class="card bg-dark text-light">
               <img src="./Foto/DSC_3387.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
-                <h5 class="card-title">kiya</h5>
+                <h5 class="card-title">Raysha Tazkiya Rahim</h5>
                 <div class="d-flex justify-content-center">
                   <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
                   <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
@@ -185,7 +204,7 @@
             <div class="card bg-dark text-light align-items-center">
               <img src="./Foto/aidil.jpg" class="card-img-top rounded-circle mx-auto mt-3" alt="Profile Image" style="width: 100px; height: 100px; object-fit: cover" />
               <div class="card-body text-center">
-                <h5 class="card-title">Aidil Fitrah</h5>
+                <h5 class="card-title">Muhammad Aidil Fitrah</h5>
                 <div class="d-flex justify-content-center">
                   <a href="#" class="mx-2 text-light"><i class="bi bi-instagram"></i></a>
                   <a href="#" class="mx-2 text-light"><i class="bi bi-linkedin"></i></a>
@@ -200,7 +219,8 @@
       </div>
     </section>
 
-    <iframe id= "Input" src="http://localhost:8501" width="100%" height="600" frameborder="0"></iframe>
+    <div id = "Input"></div>
+    <iframe  src="http://localhost:8501" width="100%" height="600" frameborder="0"></iframe>
 
     <!-- Footer -->
     <footer class="bg-dark py-3 text-center fade-in">
@@ -210,33 +230,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          // Pilih semua elemen kecuali navbar
-          const allElements = document.querySelectorAll('body *:not(.navbar)');
-          
-          // Tambahkan kelas 'fade-in' ke semua elemen yang ditemukan
-          allElements.forEach(element => {
-              element.classList.add('fade-in');
-          });
-  
-          // Fungsi untuk menangani scroll dan menambahkan kelas 'show' jika elemen terlihat
-          const handleScroll = () => {
-              const elements = document.querySelectorAll('.fade-in');
-              elements.forEach(element => {
-                  const rect = element.getBoundingClientRect();
-                  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-  
-                  // Jika elemen terlihat di viewport, tambahkan kelas 'show'
-                  if (rect.top <= windowHeight - 100) {
-                      element.classList.add('show');
-                  }
-              });
-          };
-  
-          window.addEventListener('scroll', handleScroll);
-          handleScroll(); // Panggil sekali saat halaman dimuat untuk elemen yang sudah terlihat
-      });
-  </script>
   </body>
 </html>
