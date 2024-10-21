@@ -6,7 +6,7 @@ import numpy as np
 
 def load_html_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
-    return file.read()
+        return file.read()
  
 def main():
     st.markdown("# Halaman Utama 🎈")
